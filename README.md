@@ -125,23 +125,26 @@ print(acc.get_balance())
 
 ---
 
-### 7. Classmethod & Staticmethod
+### 7. Classmethod & Staticmethod (updated)
 
-**Task:** `MathTools` classida factorial va string parsing yozing.
+**Task:** `StringTools` classida:
+
+* `is_palindrome(text)` static methodi yozing
+* `from_sentence("I love Python")` classmethod orqali obyekt yarating va so‘zlar ro‘yxatini saqlang.
 
 **Input:**
 
 ```python
-print(MathTools.factorial(5))
-mt = MathTools.from_string("5,6,7")
-print(mt.numbers)
+print(StringTools.is_palindrome("level"))
+st = StringTools.from_sentence("I love Python")
+print(st.words)
 ```
 
 **Output:**
 
 ```
-120
-[5, 6, 7]
+True
+['I', 'love', 'Python']
 ```
 
 ---
@@ -271,88 +274,118 @@ Paid 200 using Card
 
 ---
 
-### 14. Singleton Pattern
+### 14. Cart class
 
-**Task:** `Logger` faqat bitta obyekt yaratsin.
+**Task:** `Cart` classini yozing.
+
+* `add_item(name, price)` metodida mahsulot qo‘shilsin
+* `get_total()` umumiy narxni hisoblasin
 
 **Input:**
 
 ```python
-l1 = Logger()
-l2 = Logger()
-print(l1 is l2)
+cart = Cart()
+cart.add_item("Laptop", 2000)
+cart.add_item("Mouse", 100)
+print(cart.get_total())
 ```
 
 **Output:**
 
 ```
-True
+2100
 ```
 
 ---
 
-### 15. **str** vs **repr**
+### 15. TodoList class
 
-**Task:** `User` classida ikkalasini yozing.
+**Task:** `TodoList` classini yozing.
+
+* `add_task(task)` metodida vazifa qo‘shilsin
+* `show_tasks()` metodida barcha vazifalar chiqsin
 
 **Input:**
 
 ```python
-u = User("Ali", 25)
-print(str(u))
-print(repr(u))
+todo = TodoList()
+todo.add_task("Do homework")
+todo.add_task("Clean room")
+todo.show_tasks()
 ```
 
 **Output:**
 
 ```
-User: Ali, Age: 25
-User('Ali', 25)
+1. Do homework
+2. Clean room
 ```
 
 ---
 
-### 16. Inheritance Chain
+### 16. Bank Account – Inheritance (updated & clear)
 
-**Task:** `LivingThing → Animal → Mammal → Human`.
+**Task:** `Account` nomli asosiy class yozing.
+
+* Unda `balance` atributi va `deposit(amount)` hamda `withdraw(amount)` metodlari bo‘lsin.
+
+So‘ngra undan ikkita class hosil qiling:
+
+1. **SavingsAccount**
+
+   * `interest_rate` atributiga ega bo‘lsin.
+   * `calculate_interest()` metodi balans bo‘yicha foiz hisoblab qaytarsin (`balance * interest_rate`).
+
+2. **CheckingAccount**
+
+   * Oddiy `deposit()` va `withdraw()` metodlari ishlasin (foizsiz).
+
+---
 
 **Input:**
 
 ```python
-h = Human()
-h.breathe()
-h.eat()
-h.walk()
-h.speak()
+s = SavingsAccount(1000, 0.05)  # 5% foiz stavkasi
+s.deposit(500)                  # balansga qo‘shildi
+print(s.calculate_interest())
 ```
 
 **Output:**
 
 ```
-Breathing...
-Eating...
-Walking...
-Speaking...
+75.0
 ```
 
 ---
 
-### 17. Destructor
+📌 Ya’ni:
 
-**Task:** `FileHandler` classida fayl ochilib yopilsin.
+* Avval `Account` → umumiy bank hisob
+* Keyin `SavingsAccount` → foizli hisob
+* `CheckingAccount` → oddiy hisob
+
+---
+
+### 17. Session class
+
+**Task:** `Session` classini yozing.
+
+* `login(username)` metodida foydalanuvchi tizimga kiradi
+* `logout()` metodida tizimdan chiqadi
 
 **Input:**
 
 ```python
-f = FileHandler("test.txt")
-del f
+s = Session()
+s.login("Ali")
+s.logout()
 ```
 
-**Output (terminal log):**
+**Output:**
 
 ```
-File opened
-File closed
+Ali logged in
+Ali logged out
 ```
 
 ---
