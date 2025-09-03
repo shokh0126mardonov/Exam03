@@ -12,6 +12,7 @@ class Cart:
             
         return s
         
+        
 cart = Cart()
 cart.add_item("Laptop", 2000)
 cart.add_item("Mouse", 100)
