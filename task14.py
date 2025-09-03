@@ -1,6 +1,6 @@
 class Cart:
     def __init__(self):
-        self.total = []
+        self.__total = []
         
     def add_item(self,name,price):
         self.total.append({"name":name,"price":price})
